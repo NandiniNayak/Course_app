@@ -1,0 +1,19 @@
+<%= simple_form_for(@image) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :profile %>
+    <%= f.input :image %>
+  </div>
+
+  <%= f.fields_for :images do |image_form| %>
+    <%= image_form.file_field :image %>
+    <%= image_form.link_to_remove "Remove this image" %>
+    <% end %>
+    <p><%= f.link_to_add "Add an image", :images %></p>
+  <%end%>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

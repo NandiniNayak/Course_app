@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email</strong>
+  <%= @profile.user.email %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @profile.username %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @profile.website %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @profile.bio %>
+</p>
+
+<p>
+  <strong>Profile pic:</strong>
+  <%= @profile.profile_pic %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile),class: 'btn btn-success' %> |
+<%= link_to 'Back', profiles_path %>

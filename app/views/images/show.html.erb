@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @image.profile %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= cl_image_tag @image.image,width: '250px',:effect=>"sepia" %>
+</p>
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

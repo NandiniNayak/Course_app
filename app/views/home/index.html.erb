@@ -1,0 +1,28 @@
+<h1>New App</h1>
+<p><%= link_to 'Share an article',new_article_path,class: 'btn btn-info'%></p>
+
+<% @articles.each do |article|%>
+  <div><class="panel panel-default">
+    <div><class="panel-body">
+      <h4><%=link_to article.title,article.url,target: '_blank'%></h4>
+      <p>Posted by: <%article.user.profile.username %>,
+        <%=time_ago_in_words(article.created_at)%> ago
+        <%=link_to pluralize(article.comments.count,'Comment'),article_path(article)%>
+        <p><%=pluralize(article.votes_for.size, 'vote')%>
+        <%if user_signed_in?%>
+          <%if current_user.voted_for? article%>
+              <!--see an unlike button--->
+              <%=link_to'unlike',unlike_article_path(article),class:'btn btn-warning btn-sm'%>
+          <%else%>
+              <%=link_to'Like',like_article_path(article),class:'btn btn-warning btn-sm'%>
+          <%end%>
+        <%end%>
+        </p>
+        <%if user_signed_in?%>
+          <%if article.user == current_user%>
+            <%=link_to 'Edit',edit_article_path(article),class: 'btn btn-warning btn-sm'%>
+          <%end%>
+        <%end%>
+    </div>
+  </div>
+<%end%>
